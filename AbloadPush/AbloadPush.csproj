@@ -159,6 +159,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AbloadIcon.ico" />
+    <None Include="Resources\ic_settings_black_24dp_1x.png" />
+    <None Include="Resources\ic_exit_to_app_black_24dp_1x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
