@@ -161,12 +161,6 @@
     <Content Include="AbloadIcon.ico" />
     <None Include="Resources\ic_settings_black_24dp_1x.png" />
     <None Include="Resources\ic_exit_to_app_black_24dp_1x.png" />
-    <None Include="Resources\ic_close_black_24dp_2x.png" />
-    <None Include="Resources\ic_exit_to_app_black_24dp_2x.png" />
-    <None Include="Resources\ic_settings_black_24dp_2x.png" />
-    <None Include="Resources\ic_settings_black_24dp_1x_fIF_icon.ico" />
-    <None Include="Resources\ic_exit_to_app_black_24dp_1x_eUr_icon.ico" />
-    <None Include="Resources\Settings.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
