@@ -26,7 +26,7 @@ namespace AbloadPush.UI
             var settingsItem = new ToolStripMenuItem();
             settingsItem.Text = "Settings";
             settingsItem.Click += new EventHandler(Settings_Click);
-            settingsItem.Image = Resources.Explorer;
+            settingsItem.Image = Resources.ic_settings_black_24dp_1x;
             strip.Items.Add(settingsItem);
 
             var aboutItem = new ToolStripMenuItem();
@@ -41,7 +41,7 @@ namespace AbloadPush.UI
             var exitItem = new ToolStripMenuItem();
             exitItem.Text = "Exit";
             exitItem.Click += new System.EventHandler(Exit_Click);
-            exitItem.Image = Resources.Exit;
+            exitItem.Image = Resources.ic_exit_to_app_black_24dp_1x;
             strip.Items.Add(exitItem);
         }
 
