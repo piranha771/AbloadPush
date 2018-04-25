@@ -81,6 +81,33 @@ namespace AbloadPush.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string ContextMenu_ContextMenu_About {
+            get {
+                return ResourceManager.GetString("ContextMenu_ContextMenu_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        internal static string ContextMenu_ContextMenu_Exit {
+            get {
+                return ResourceManager.GetString("ContextMenu_ContextMenu_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string ContextMenu_ContextMenu_Settings {
+            get {
+                return ResourceManager.GetString("ContextMenu_ContextMenu_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Exit {
@@ -117,6 +144,70 @@ namespace AbloadPush.Properties {
             get {
                 object obj = ResourceManager.GetObject("ic_settings_black_24dp_1x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expires.
+        /// </summary>
+        internal static string SettingsMenu_SettingsMenu_Expires {
+            get {
+                return ResourceManager.GetString("SettingsMenu_SettingsMenu_Expires", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info: No username or password information is stored on this computer.
+        ///        The login information is encrypted during transmission..
+        /// </summary>
+        internal static string SettingsMenu_SettingsMenu_Info {
+            get {
+                return ResourceManager.GetString("SettingsMenu_SettingsMenu_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;re logged in..
+        /// </summary>
+        internal static string SettingsMenu_SettingsMenu_LoggedIn {
+            get {
+                return ResourceManager.GetString("SettingsMenu_SettingsMenu_LoggedIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string SettingsMenu_SettingsMenu_Login {
+            get {
+                return ResourceManager.GetString("SettingsMenu_SettingsMenu_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        internal static string SettingsMenu_SettingsMenu_Logout {
+            get {
+                return ResourceManager.GetString("SettingsMenu_SettingsMenu_Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string SettingsMenu_SettingsMenu_Password {
+            get {
+                return ResourceManager.GetString("SettingsMenu_SettingsMenu_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        internal static string SettingsMenu_SettingsMenu_Username {
+            get {
+                return ResourceManager.GetString("SettingsMenu_SettingsMenu_Username", resourceCulture);
             }
         }
     }

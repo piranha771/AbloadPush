@@ -23,25 +23,31 @@ namespace AbloadPush.UI
 
             strip = new ContextMenuStrip();
 
-            var settingsItem = new ToolStripMenuItem();
-            settingsItem.Text = "Settings";
+            var settingsItem = new ToolStripMenuItem
+            {
+                Text = Resources.ContextMenu_ContextMenu_Settings,
+                Image = Resources.ic_settings_black_24dp_1x
+            };
             settingsItem.Click += new EventHandler(Settings_Click);
-            settingsItem.Image = Resources.ic_settings_black_24dp_1x;
             strip.Items.Add(settingsItem);
 
-            var aboutItem = new ToolStripMenuItem();
-            aboutItem.Text = "About";
+            var aboutItem = new ToolStripMenuItem
+            {
+                Text = Resources.ContextMenu_ContextMenu_About,
+                Image = Resources.About
+            };
             aboutItem.Click += new EventHandler(About_Click);
-            aboutItem.Image = Resources.About;
             //strip.Items.Add(aboutItem);
 
             var sepItem = new ToolStripSeparator();
             strip.Items.Add(sepItem);
 
-            var exitItem = new ToolStripMenuItem();
-            exitItem.Text = "Exit";
+            var exitItem = new ToolStripMenuItem
+            {
+                Text = Resources.ContextMenu_ContextMenu_Exit,
+                Image = Resources.ic_exit_to_app_black_24dp_1x
+            };
             exitItem.Click += new System.EventHandler(Exit_Click);
-            exitItem.Image = Resources.ic_exit_to_app_black_24dp_1x;
             strip.Items.Add(exitItem);
         }
 

@@ -1,4 +1,6 @@
-﻿namespace AbloadPush.UI.Abload
+﻿using AbloadPush.Properties;
+
+namespace AbloadPush.UI.Abload
 {
     partial class AbloadLoginUc
     {
@@ -72,8 +74,8 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(334, 26);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Info: No username or password information is stored on this computer.\r\n        Th" +
-    "e login information is encrypted during transmission.\r\n";
+            this.label3.Text = Resources.SettingsMenu_SettingsMenu_Info;
+//            this.label3.Text = "Info: No username or password information is stored on this computer.\r\n        The login information is encrypted during transmission.\r\n";
             // 
             // label2
             // 
@@ -82,7 +84,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Password";
+            this.label2.Text = Resources.SettingsMenu_SettingsMenu_Password;
             // 
             // label1
             // 
@@ -91,7 +93,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Username";
+            this.label1.Text = Resources.SettingsMenu_SettingsMenu_Username;
             // 
             // bLogin
             // 
@@ -99,7 +101,7 @@
             this.bLogin.Name = "bLogin";
             this.bLogin.Size = new System.Drawing.Size(70, 23);
             this.bLogin.TabIndex = 2;
-            this.bLogin.Text = "Login";
+            this.bLogin.Text = Resources.SettingsMenu_SettingsMenu_Login;
             this.bLogin.UseVisualStyleBackColor = true;
             this.bLogin.Click += new System.EventHandler(this.BLogin_Click);
             // 
@@ -144,7 +146,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 13);
             this.label6.TabIndex = 7;
-            this.label6.Text = "You\'re logged in.";
+            this.label6.Text = Resources.SettingsMenu_SettingsMenu_LoggedIn;
             // 
             // lExpires
             // 
@@ -162,7 +164,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Expires:";
+            this.label5.Text = Resources.SettingsMenu_SettingsMenu_Expires;
             // 
             // lCookie
             // 
@@ -189,7 +191,7 @@
             this.bLogout.Name = "bLogout";
             this.bLogout.Size = new System.Drawing.Size(81, 23);
             this.bLogout.TabIndex = 2;
-            this.bLogout.Text = "Logout";
+            this.bLogout.Text = Resources.SettingsMenu_SettingsMenu_Logout;
             this.bLogout.UseVisualStyleBackColor = true;
             this.bLogout.Click += new System.EventHandler(this.BLogout_Click);
             // 
