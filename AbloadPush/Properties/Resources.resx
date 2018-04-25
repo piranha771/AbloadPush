@@ -145,11 +145,26 @@
   <data name="ContextMenu_ContextMenu_Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="SettingsMenu_SettingsMenu_Expires" xml:space="preserve">
+    <value>Expires</value>
+  </data>
   <data name="SettingsMenu_SettingsMenu_Info" xml:space="preserve">
     <value>Info: No username or password information is stored on this computer.
         The login information is encrypted during transmission.</value>
   </data>
-  <data name="String2" xml:space="preserve">
-    <value />
+  <data name="SettingsMenu_SettingsMenu_LoggedIn" xml:space="preserve">
+    <value>You're logged in.</value>
+  </data>
+  <data name="SettingsMenu_SettingsMenu_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="SettingsMenu_SettingsMenu_Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="SettingsMenu_SettingsMenu_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="SettingsMenu_SettingsMenu_Username" xml:space="preserve">
+    <value>Username</value>
   </data>
 </root>

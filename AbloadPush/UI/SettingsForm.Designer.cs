@@ -1,4 +1,6 @@
-﻿namespace AbloadPush.UI
+﻿using AbloadPush.Properties;
+
+namespace AbloadPush.UI
 {
     partial class SettingsForm
     {
@@ -40,7 +42,7 @@
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Settings";
+            this.Text = Resources.ContextMenu_ContextMenu_Settings;
             this.Shown += new System.EventHandler(this.SettingsForm_Shown);
             this.VisibleChanged += new System.EventHandler(this.SettingsForm_VisibleChanged);
             this.ResumeLayout(false);
