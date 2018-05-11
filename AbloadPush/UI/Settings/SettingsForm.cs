@@ -1,16 +1,17 @@
 ﻿using AbloadPush.ImageService;
 using AbloadPush.ImageService.Abload;
 using AbloadPush.UI.Abload;
+using AbloadPush.UI.Abload.Settings;
 using System;
 using System.Windows.Forms;
 
-namespace AbloadPush.UI
+namespace AbloadPush.UI.Settings
 {
     public partial class SettingsForm : Form
     {
 
         private IImageServiceProvider service;
-        private Settings settings;
+        private Config config;
 
         private ILoginControl lc;
 
@@ -43,7 +44,7 @@ namespace AbloadPush.UI
 
             }
         }
-        internal Settings Settings { get => settings; set => settings = value; }      
+        internal Config Config { get => config; set => config = value; }      
 
         public SettingsForm()
         {
@@ -78,7 +79,7 @@ namespace AbloadPush.UI
 
         private void WriteToSettings()
         {
-            settings.Save();
+            config.Save();
         }
 
         private async void ReadAbloadSettings()
@@ -87,7 +88,7 @@ namespace AbloadPush.UI
             var isLoggedIn = await abload.IsLoggedIn();
             if (isLoggedIn)
             {
-                var cookies = settings.Cookies.GetCookies(new Uri(AbloadService.Address));
+                var cookies = config.Cookies.GetCookies(new Uri(AbloadService.Address));
                 var sessioncookie = cookies[AbloadService.SessionCookieName];
                 if (sessioncookie == null)
                 {

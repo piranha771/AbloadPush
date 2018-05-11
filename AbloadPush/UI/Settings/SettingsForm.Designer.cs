@@ -1,4 +1,4 @@
-﻿namespace AbloadPush.UI
+﻿namespace AbloadPush.UI.Settings
 {
     partial class SettingsForm
     {

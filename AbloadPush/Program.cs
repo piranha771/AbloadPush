@@ -3,6 +3,7 @@ using AbloadPush.ImageService;
 using AbloadPush.ImageService.Abload;
 using AbloadPush.RegionSelector;
 using AbloadPush.UI;
+using AbloadPush.UI.Settings;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -11,7 +12,7 @@ namespace AbloadPush
 {
     static class Program
 	{
-        private static Settings settings;
+        private static Config settings;
         private static KeyControlManager kcm;
         private static IRegionSelector selector;
         private static IImageCreator ic;
@@ -20,7 +21,7 @@ namespace AbloadPush
         [STAThread]
 		static void Main()
         {
-            settings = new Settings();
+            settings = new Config();
             settings.Load();
             isp = new AbloadService(settings.Cookies);
 

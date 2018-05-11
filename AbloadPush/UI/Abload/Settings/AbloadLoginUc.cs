@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using AbloadPush.ImageService;
 
-namespace AbloadPush.UI.Abload
+namespace AbloadPush.UI.Abload.Settings
 {
     public partial class AbloadLoginUc : UserControl, ILoginControl
     {

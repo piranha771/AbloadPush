@@ -85,16 +85,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
     <Compile Include="ImageProcessing\IImageCreator.cs" />
     <Compile Include="ImageProcessing\NQuantImageCreator.cs" />
     <Compile Include="ImageService\Abload\AbloadService.cs" />
     <Compile Include="ImageService\Abload\AbloadUserSettings.cs" />
     <Compile Include="ImageService\LoginData.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="UI\Abload\AbloadLoginUc.cs">
+    <Compile Include="UI\Abload\Settings\AbloadLoginUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Abload\AbloadLoginUc.Designer.cs">
+    <Compile Include="UI\Abload\Settings\AbloadLoginUc.Designer.cs">
       <DependentUpon>AbloadLoginUc.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ContextMenu.cs" />
@@ -112,14 +112,14 @@
     <Compile Include="RegionSelector\Vector2.cs" />
     <Compile Include="RegionSelector\Region.cs" />
     <Compile Include="RegionSelector\Windows10RegionSelector.cs" />
-    <Compile Include="UI\SettingsForm.cs">
+    <Compile Include="UI\Settings\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\SettingsForm.Designer.cs">
+    <Compile Include="UI\Settings\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageService\UploadResult.cs" />
-    <EmbeddedResource Include="UI\Abload\AbloadLoginUc.resx">
+    <EmbeddedResource Include="UI\Abload\Settings\AbloadLoginUc.resx">
       <DependentUpon>AbloadLoginUc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -127,7 +127,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\SettingsForm.resx">
+    <EmbeddedResource Include="UI\Settings\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -161,6 +161,7 @@
     <None Include="Resources\ic_settings_black_24dp_1x.png" />
     <None Include="Resources\ic_exit_to_app_black_24dp_1x.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

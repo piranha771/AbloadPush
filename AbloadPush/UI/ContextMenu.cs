@@ -3,22 +3,23 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using AbloadPush.Properties;
 using AbloadPush.ImageService;
+using AbloadPush.UI.Settings;
 
 namespace AbloadPush.UI
 {
     class ContextMenu
 	{
         private readonly ContextMenuStrip strip;
-        private readonly Settings settings;
+        private readonly Config config;
         private readonly SettingsForm settingsForm;
 
         public ContextMenuStrip Strip => strip;
 
-        public ContextMenu(Settings settings, IImageServiceProvider service)
+        public ContextMenu(Config config, IImageServiceProvider service)
         {
-            this.settings = settings;
+            this.config = config;
             this.settingsForm = new SettingsForm();
-            settingsForm.Settings = settings;
+            settingsForm.Config = config;
             settingsForm.Service = service;
 
             strip = new ContextMenuStrip();

@@ -1,4 +1,4 @@
-﻿namespace AbloadPush.UI.Abload
+﻿namespace AbloadPush.UI.Abload.Settings
 {
     partial class AbloadLoginUc
     {

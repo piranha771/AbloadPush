@@ -22,7 +22,7 @@ namespace AbloadPush.UI
 
         private EventHandler lastEventHandler;
 
-		public ProcessIcon(Settings settings, IImageServiceProvider service)
+		public ProcessIcon(Config settings, IImageServiceProvider service)
 		{
             cm = new ContextMenu(settings, service);
 
