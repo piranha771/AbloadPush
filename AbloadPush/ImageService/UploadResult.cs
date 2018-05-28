@@ -12,10 +12,10 @@
 
         private UploadStatus status;
         private string imageUrl;
-        private string reason;
+        private object reason;
 
         internal UploadStatus Status { get => status; set => status = value; }
         public string ImageUrl { get => imageUrl; set => imageUrl = value; }
-        public string Reason { get => reason; set => reason = value; }
+        public object Reason { get => reason; set => reason = value; }
     }
 }

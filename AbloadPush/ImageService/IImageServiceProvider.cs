@@ -16,6 +16,6 @@ namespace AbloadPush.ImageService
         void Login(ILoginData loginData);
         Task<bool> IsLoggedIn();
         void Logout();
-        void Upload(Stream imageData);   
+        void Upload(Stream imageData, string name);   
     }
 }

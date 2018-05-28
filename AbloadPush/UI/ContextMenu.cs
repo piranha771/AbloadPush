@@ -30,11 +30,11 @@ namespace AbloadPush.UI
             settingsItem.Image = Resources.ic_settings_black_24dp_1x;
             strip.Items.Add(settingsItem);
 
-            var aboutItem = new ToolStripMenuItem();
-            aboutItem.Text = "About";
-            aboutItem.Click += new EventHandler(About_Click);
-            aboutItem.Image = Resources.About;
-            //strip.Items.Add(aboutItem);
+            //var aboutItem = new ToolStripMenuItem();
+            //aboutItem.Text = "About";
+            //aboutItem.Click += new EventHandler(About_Click);
+            //aboutItem.Image = Resources.About;
+            ////strip.Items.Add(aboutItem);
 
             var sepItem = new ToolStripSeparator();
             strip.Items.Add(sepItem);

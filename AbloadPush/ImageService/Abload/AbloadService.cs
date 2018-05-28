@@ -14,12 +14,14 @@ namespace AbloadPush.ImageService.Abload
     {        
         public static readonly string Address = "https://abload.de";
         public static readonly string ImageAddress = Address + "/img/";
+        public static readonly string ImageWebsite = Address + "/image.php?img=";
         public static readonly string UploadAddress = Address + "/upload.php?printr=true";
         public static readonly string LoginAddress = Address + "/login.php";
         public static readonly string LogoutAddress = Address + "/calls/logout.php";
         public static readonly string UserSettingsAddress = Address + "/calls/userXML.php";
 
-        public static readonly string PostBoundaryName = "--atool26589";
+        public static readonly string UserAgent = "Abloadlib / 0.1 - AbloadPush ImpostorAgent";
+        public static readonly string PostBoundaryName = "--atool2738";
         public static readonly string PostResizeFieldName = "\"resize\"";
         public static readonly string PostGalleryFieldName = "\"gallery\"";
         public static readonly string PostImageFieldName = "\"img0\"";
@@ -52,6 +54,7 @@ namespace AbloadPush.ImageService.Abload
             //clientHandler.AllowAutoRedirect = false;
 
             client = new HttpClient(clientHandler);
+            client.DefaultRequestHeaders.Add("User-Agent", UserAgent);
 
             // TODO: get galleries
         }
@@ -67,28 +70,43 @@ namespace AbloadPush.ImageService.Abload
                 { "cookie", "on" }
             });
 
-            var response = await client.PostAsync(LoginAddress, postContent);
+            try
+            {
+                var response = await client.PostAsync(LoginAddress, postContent);
 
-            var abloadCookies = cookieContainer.GetCookies(new Uri(Address));
-            var sessionCookie = abloadCookies[SessionCookieName];
+                var abloadCookies = cookieContainer.GetCookies(new Uri(Address));
+                var sessionCookie = abloadCookies[SessionCookieName];
 
-            result.Success = true;
+                result.Success = true;           
+            }
+            catch (HttpRequestException ex)
+            {
+                result.Success = false;
+                result.Reason = ex.Message;
+            }
 
             LoginComplete(this, result);
         }
 
         public async Task<bool> IsLoggedIn()
         {
-            var response = await client.GetAsync(UserSettingsAddress);
-
-            if (new Uri(Address + response.RequestMessage.RequestUri.AbsolutePath) != new Uri(LoginAddress))
+            try
             {
-                var responseString = await response.Content.ReadAsStringAsync();
+                var response = await client.GetAsync(UserSettingsAddress);
 
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(responseString);
-                var users = doc.GetElementsByTagName("user");
-                return users.Count >= 1;
+                if (new Uri(Address + response.RequestMessage.RequestUri.AbsolutePath) != new Uri(LoginAddress))
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+
+                    XmlDocument doc = new XmlDocument();
+                    doc.LoadXml(responseString);
+                    var users = doc.GetElementsByTagName("user");
+                    return users.Count >= 1;
+                }
+            } 
+            catch (HttpRequestException)
+            {
+                return false;
             }
 
             return false;
@@ -103,32 +121,44 @@ namespace AbloadPush.ImageService.Abload
             LogoutComplete(this, result);
         }
 
-        public async void Upload(Stream imageData)
+        public async void Upload(Stream imageData, string name)
         {
             var result = new UploadResult();
+
+            imageData.Seek(0, SeekOrigin.Begin);
 
             var postContent = new MultipartFormDataContent(PostBoundaryName)
             {
                 { new StringContent("none"), PostResizeFieldName },
                 { new StringContent("NULL"), PostGalleryFieldName },
-                { new StreamContent(imageData), PostImageFieldName, "\"" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-push.png\"" }
+                { new StreamContent(imageData), PostImageFieldName, "\"" + name + "\"" }
             };
 
-            var response = await client.PostAsync(UploadAddress, postContent);
-            var responseString = await response.Content.ReadAsStringAsync();
-
-            var match = Regex.Match(responseString, AbloadResponsePattern);
-
-            if (match.Success)
+            try
             {
-                result.Status = UploadStatus.Succeeded;
-                result.ImageUrl = ImageAddress + match.Groups["filename"].Value;
+                var response = await client.PostAsync(UploadAddress, postContent);
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                var match = Regex.Match(responseString, AbloadResponsePattern);
+
+                if (match.Success)
+                {
+                    result.Status = UploadStatus.Succeeded;
+                    result.ImageUrl = ImageAddress + match.Groups["filename"].Value;
+                    result.Reason = ImageWebsite + match.Groups["filename"].Value;
+                }
+                else
+                {
+                    result.Status = UploadStatus.Failed;
+                    result.Reason = new Exception("File not found in response");
+                }
             }
-            else
+            catch (HttpRequestException ex)
             {
                 result.Status = UploadStatus.Failed;
-                result.Reason = ("File not found in response"); 
+                result.Reason = ex;
             }
+
 
             lastUploadResult = result;
             UploadFinished(this, result);

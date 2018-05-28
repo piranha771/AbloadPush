@@ -13,8 +13,8 @@ namespace AbloadPush.UI.Settings
         private IImageServiceProvider service;
         private Config config;
 
-        private ILoginControl lc;
-
+        private ILoginControl lc; 
+    
         internal IImageServiceProvider Service
         {
             get => service;
@@ -26,7 +26,7 @@ namespace AbloadPush.UI.Settings
 
                 if (lc != null)
                 {
-                    Controls.Remove(lc as UserControl);
+                    flpContent.Controls.Remove(lc as UserControl);
                     lc.Login -= Login;
                     lc.Logout -= Logout;
                 }
@@ -38,12 +38,12 @@ namespace AbloadPush.UI.Settings
                     };
                     lc.Login += Login;
                     lc.Logout += Logout;
-                    Controls.Add(lc as UserControl);
+                    flpContent.Controls.Add(lc as UserControl);
+                    flpContent.Controls.SetChildIndex(lc as UserControl, 0);
                 }
-
-
             }
         }
+
         internal Config Config { get => config; set => config = value; }      
 
         public SettingsForm()
@@ -71,14 +71,24 @@ namespace AbloadPush.UI.Settings
 
         private void ReadFromSettings()
         {
+            ReadGeneralSettings();
+
             if (service.Name == AbloadService.Address)
             {
                 ReadAbloadSettings();
             }
         }
 
+        private void ReadGeneralSettings()
+        {
+            localCopyUc1.DoSaveDirectory = config.DoSaveToDisk;
+            localCopyUc1.SaveDirectory = config.ImagePath;
+        }
+
         private void WriteToSettings()
         {
+            config.DoSaveToDisk = localCopyUc1.DoSaveDirectory;
+            config.ImagePath = localCopyUc1.SaveDirectory;
             config.Save();
         }
 
@@ -117,8 +127,15 @@ namespace AbloadPush.UI.Settings
 
         private void LoginComplete(object sender, LoginResult result)
         {
-            WriteToSettings();
-            ReadFromSettings();
+            if (result.Success)
+            {
+                WriteToSettings();
+                ReadFromSettings();
+            }
+            else
+            {
+                MessageBox.Show(null, "Login has failed:\r\n\r\n" + result.Reason, "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LogoutComplete(object sender, LogoutResult result)

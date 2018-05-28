@@ -29,5 +29,15 @@ namespace AbloadPush.ImageProcessing
 
             return result;
         }
+
+        public void Save(Stream image, string path, string name)
+        {
+            Directory.CreateDirectory(path);
+            using (var fileStream = File.Create(path +  "\\" + name))
+            {
+                image.Seek(0, SeekOrigin.Begin);
+                image.CopyTo(fileStream);
+            }
+        }
     }
 }

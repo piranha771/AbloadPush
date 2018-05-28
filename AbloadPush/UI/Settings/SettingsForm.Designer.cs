@@ -28,13 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.flpContent = new System.Windows.Forms.FlowLayoutPanel();
+            this.localCopyUc1 = new AbloadPush.UI.Settings.LocalCopyUc();
+            this.flpContent.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // flpContent
+            // 
+            this.flpContent.AutoSize = true;
+            this.flpContent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flpContent.Controls.Add(this.localCopyUc1);
+            this.flpContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpContent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpContent.Location = new System.Drawing.Point(0, 0);
+            this.flpContent.Name = "flpContent";
+            this.flpContent.Size = new System.Drawing.Size(327, 277);
+            this.flpContent.TabIndex = 1;
+            // 
+            // localCopyUc1
+            // 
+            this.localCopyUc1.DoSaveDirectory = false;
+            this.localCopyUc1.Location = new System.Drawing.Point(3, 3);
+            this.localCopyUc1.Name = "localCopyUc1";
+            this.localCopyUc1.SaveDirectory = "";
+            this.localCopyUc1.Size = new System.Drawing.Size(326, 85);
+            this.localCopyUc1.TabIndex = 1;
             // 
             // SettingsForm
             // 
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(178, 55);
+            this.ClientSize = new System.Drawing.Size(327, 277);
+            this.Controls.Add(this.flpContent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -43,10 +68,15 @@
             this.Text = "Settings";
             this.Shown += new System.EventHandler(this.SettingsForm_Shown);
             this.VisibleChanged += new System.EventHandler(this.SettingsForm_VisibleChanged);
+            this.flpContent.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.FlowLayoutPanel flpContent;
+        private LocalCopyUc localCopyUc1;
     }
 }

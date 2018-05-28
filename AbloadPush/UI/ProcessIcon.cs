@@ -47,7 +47,7 @@ namespace AbloadPush.UI
 			}
 		}
 
-        public void NotifyUser(string title, string text, string link)
+        public void NotifyUserSuccess(string title, string text, string link)
         {
             if (lastEventHandler != null)
                 ni.BalloonTipClicked -= lastEventHandler;
@@ -59,7 +59,22 @@ namespace AbloadPush.UI
                 };
             ni.BalloonTipClicked += lastEventHandler;
 
-            ni.ShowBalloonTip(3000, title, text, ToolTipIcon.None);      
+            ni.ShowBalloonTip(5000, title, text, ToolTipIcon.None);      
         }
-	}
+
+        public void NotifyUserFail(string title, string text, string fullText)
+        {
+            if (lastEventHandler != null)
+                ni.BalloonTipClicked -= lastEventHandler;
+
+            lastEventHandler =
+                (sender, e) =>
+                {
+                    MessageBox.Show(fullText);
+                };
+            ni.BalloonTipClicked += lastEventHandler;
+
+            ni.ShowBalloonTip(5000, title, text +  "\r\n\r\nClick here for more info.", ToolTipIcon.None);
+        }
+    }
 }

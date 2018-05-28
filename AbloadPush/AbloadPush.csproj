@@ -112,6 +112,12 @@
     <Compile Include="RegionSelector\Vector2.cs" />
     <Compile Include="RegionSelector\Region.cs" />
     <Compile Include="RegionSelector\Windows10RegionSelector.cs" />
+    <Compile Include="UI\Settings\LocalCopyUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Settings\LocalCopyUc.Designer.cs">
+      <DependentUpon>LocalCopyUc.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Settings\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Settings\LocalCopyUc.resx">
+      <DependentUpon>LocalCopyUc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Settings\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
