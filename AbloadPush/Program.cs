@@ -22,8 +22,9 @@ namespace AbloadPush
         {
 #if !DEBUG
             try
-            {
 #endif
+            {
+
                 settings = new Config();
                 settings.Load();
                 isp = new AbloadService(settings.Cookies);
@@ -37,6 +38,15 @@ namespace AbloadPush
                     selector = new Windows10RegionSelector(kcm.GlobalHook);
                     ic = new NQuantImageCreator();
 
+                    // Tie display shot to key action
+                    kcm.DisplayShot = new Action(() =>
+                    {
+                        Region region = selector.GetAllScreenRegion();
+                        Stream image = ic.CreateFromScreenRegion(region);
+                        SaveAndUpload(image);
+                    });
+
+                    // Tie region selector to key events
                     kcm.RegionShotStart = selector.Start;
                     kcm.AbortRegionShot = selector.Abort;
 
@@ -44,16 +54,7 @@ namespace AbloadPush
                         (sender, region) =>
                         {
                             Stream image = ic.CreateFromScreenRegion(region);
-                            string name = DateTime.Now.ToString("yyyyMMddHHmmss") + "-push.png";
-
-                            // SAVE DISK
-                            if (settings.DoSaveToDisk)
-                            {
-                                ic.Save(image, settings.ImagePath, name);
-                            }
-
-                            // SAVE ONLINE
-                            isp.Upload(image, name);
+                            SaveAndUpload(image);
                         }
                     );
 
@@ -85,14 +86,28 @@ namespace AbloadPush
 
                     Application.Run();
                 }
-#if !DEBUG
-            }
 
+            }
+#if !DEBUG
             catch (Exception ex)
             {
                 MessageBox.Show(null, ex.Message + "\r\n\r\nIf this is helpful for you, here is the stack trace:\r\n\r\n" + ex.GetType().ToString() + ex.StackTrace, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 #endif
+        }
+
+        private static void SaveAndUpload(Stream image)
+        {
+            string name = DateTime.Now.ToString("yyyyMMddHHmmss") + "-push.png";
+
+            // SAVE DISK
+            if (settings.DoSaveToDisk)
+            {
+                ic.Save(image, settings.ImagePath, name);
+            }
+
+            // SAVE ONLINE
+            isp.Upload(image, name);
         }
     }
 }

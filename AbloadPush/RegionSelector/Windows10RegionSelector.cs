@@ -116,7 +116,7 @@ namespace AbloadPush.RegionSelector
             isDragging = false;
         }
 
-        void Started(object sender, MouseEventArgs e)
+        public void Started(object sender, MouseEventArgs e)
         {
             if (isActive)
             {
@@ -127,6 +127,14 @@ namespace AbloadPush.RegionSelector
                 regionSelector.Show();
 
             }
+        }
+
+        public Region GetAllScreenRegion()
+        {
+            return new Region(
+                new Vector2 { X = 0, Y = 0 },
+                new Vector2 { X = SystemInformation.VirtualScreen.Width, Y = SystemInformation.VirtualScreen.Height }
+            );
         }
 
         private static Region FormToRegion(Form form)

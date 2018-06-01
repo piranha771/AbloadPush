@@ -163,12 +163,5 @@ namespace AbloadPush.ImageService.Abload
             lastUploadResult = result;
             UploadFinished(this, result);
         }
-
-
-
-        private void LoadAbloadSettings()
-        {
-            // TODO!
-        }
     }
 }
