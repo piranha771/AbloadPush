@@ -9,5 +9,7 @@ namespace AbloadPush.RegionSelector
         Action Abort { get; }
         event EventHandler<Region> RegionFinished;
         Region GetAllScreenRegion();
+        Region GetCurrentScreenRegion();
+        Region GetCurrentWindowRegion();
     }
 }

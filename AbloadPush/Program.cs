@@ -46,6 +46,22 @@ namespace AbloadPush
                         SaveAndUpload(image);
                     });
 
+                    // Tie single display shot to key action
+                    kcm.SingleDisplayShot = new Action(() =>
+                    {
+                        Region region = selector.GetCurrentScreenRegion();
+                        Stream image = ic.CreateFromScreenRegion(region);
+                        SaveAndUpload(image);
+                    });
+
+                    // Tie window shot to key action
+                    kcm.WindowShot = new Action(() =>
+                    {
+                        Region region = selector.GetCurrentWindowRegion();
+                        Stream image = ic.CreateFromScreenRegion(region);
+                        SaveAndUpload(image);
+                    });
+
                     // Tie region selector to key events
                     kcm.RegionShotStart = selector.Start;
                     kcm.AbortRegionShot = selector.Abort;

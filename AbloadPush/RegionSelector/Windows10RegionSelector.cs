@@ -1,12 +1,34 @@
 ﻿using Gma.System.MouseKeyHook;
 using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace AbloadPush.RegionSelector
 {
     class Windows10RegionSelector : IRegionSelector
     {
+        [DllImport("user32.dll")]      
+        static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool GetWindowRect(HandleRef hWnd, out WindowRect lpRect);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct WindowRect
+        {
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
+
+            public Region ToRegion()
+            {
+                return new Region( new Vector2() { X = Left, Y = Top }, new Vector2() { X = Right, Y = Bottom} );
+            }
+        }
+
         private static readonly int CursorPadding = 6;    
 
         private readonly IKeyboardMouseEvents kmEvents;
@@ -135,6 +157,23 @@ namespace AbloadPush.RegionSelector
                 new Vector2 { X = 0, Y = 0 },
                 new Vector2 { X = SystemInformation.VirtualScreen.Width, Y = SystemInformation.VirtualScreen.Height }
             );
+        }
+
+        public Region GetCurrentScreenRegion()
+        {
+            var bounds = Screen.FromPoint(Control.MousePosition).Bounds;
+            return new Region(
+                new Vector2 { X = bounds.X, Y = bounds.Y },
+                new Vector2 { X = bounds.Right, Y = bounds.Bottom }
+            );
+        }
+
+        public Region GetCurrentWindowRegion()
+        {
+            var handle = GetForegroundWindow();
+            WindowRect bounds;
+            GetWindowRect(new HandleRef(this, handle), out bounds);
+            return bounds.ToRegion();
         }
 
         private static Region FormToRegion(Form form)

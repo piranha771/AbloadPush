@@ -102,7 +102,7 @@
     <Compile Include="ImageService\LoginResult.cs" />
     <Compile Include="ImageService\ILoginData.cs" />
     <Compile Include="ImageService\LogoutResult.cs" />
-    <Compile Include="UI\KeyControlManager.cs" />
+    <Compile Include="KeyControlManager.cs" />
     <Compile Include="UI\ILoginControl.cs" />
     <Compile Include="UI\ProcessIcon.cs" />
     <Compile Include="Program.cs" />
