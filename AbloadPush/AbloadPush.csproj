@@ -97,6 +97,12 @@
     <Compile Include="UI\Abload\Settings\AbloadLoginUc.Designer.cs">
       <DependentUpon>AbloadLoginUc.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ContextMenu.cs" />
     <Compile Include="ImageService\IImageServiceProvider.cs" />
     <Compile Include="ImageService\LoginResult.cs" />
@@ -133,6 +139,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Settings\LocalCopyUc.resx">
       <DependentUpon>LocalCopyUc.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +176,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AbloadIcon.ico" />
+    <None Include="Resources\currywurst.png" />
+    <None Include="Resources\Keycap_shift.png" />
+    <None Include="Resources\Keycap_ctrl.png" />
+    <None Include="Resources\Keycap_4.png" />
+    <None Include="Resources\Keycap_3.png" />
+    <None Include="Resources\Keycap_2.png" />
+    <None Include="Resources\Keycap_1.png" />
+    <None Include="Resources\baseline_info_black_18dp.png" />
+    <None Include="Resources\abload_logo.jpg" />
     <None Include="Resources\ic_settings_black_24dp_1x.png" />
     <None Include="Resources\ic_exit_to_app_black_24dp_1x.png" />
   </ItemGroup>
