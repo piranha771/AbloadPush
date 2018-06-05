@@ -1,21 +1,29 @@
-AbloadPush
+AbloadPush 0.9
 ======
-Unofficial upload tool for the image hoster abload.de
+[![Bild context_menu7eqv8.png auf abload.de](https://abload.de/img/context_menu7eqv8.png)](http://abload.de/image.php?img=context_menu7eqv8.png)
+
+**Unofficial** upload tool for the image hoster [abload.de](http://abload.de/)
+
+For support please open an [issue](https://github.com/piranha771/AbloadPush/issues). Do not contact the staff of abload.de for AbloadPush related issues.
+
+  **Download 0.9 [here!](https://github.com/piranha771/AbloadPush/releases)**
+
+
 
 Usage
 ------
-**Press [Shift] + [Alt] + [4]** then drag a region you want to take a screenshot of.
-Once finished, the link to the image is in your clipboard and you also recieve a notification.
+[![usage](https://abload.de/img/usagek6on7.png)](http://abload.de/image.php?img=usagek6on7.png)
 
 Status
 -----
-This software is in early beta stage. Essential features **are missing**:
-  * Installer
+This software is in beta stage. Some features are missing:
+  * ~~Installer~~
+  * ~~Start with Windows~~
+  * ~~Save screenshots to disk~~
+  * ~~Other screenshot modes (full screen, window etc.)~~
   * Galleries
   * Image quality options
-  * Save screenshots to disk
-  * Other screenshot modes (full screen, window etc.)
 
 Requirements 
 ---------
-  * Windows 10
+  * Windows 10 (may work with older Windows versions too)
