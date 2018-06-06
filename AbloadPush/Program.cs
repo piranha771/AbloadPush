@@ -20,6 +20,9 @@ namespace AbloadPush
         [STAThread]
 		static void Main()
         {
+            bool isAlreadyRunning = System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Length > 1;
+            if (isAlreadyRunning) return;
+
 #if !DEBUG
             try
 #endif
